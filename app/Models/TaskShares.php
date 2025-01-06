@@ -10,4 +10,10 @@ class TaskShares extends Model
 {
     use HasFactory, Notifiable;
     protected $table = "task_shares";
+    protected $fillable = [
+        'task_id',
+        'shared_with',
+        'permission'
+    ];
+    public $timestamps = false;
 }
