@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->dateTime('deadline');
-            $table->enum('status', ['pending', 'in_progress', 'completed']);
+            $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
             $table->json('label');
             $table->integer('created_by')->references('id')->on('users');
         });
