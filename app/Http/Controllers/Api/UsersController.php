@@ -131,10 +131,9 @@ class UsersController extends Controller
     }
 
     public function logout(Request $request){
-        Auth::logout();
- 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        $user = $request->user();
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+        
         return response()->json([
             'success' => true,
             'message' => 'Logout Berhasil!',  

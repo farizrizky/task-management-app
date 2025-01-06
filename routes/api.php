@@ -12,6 +12,6 @@ Route::get('/user', function (Request $request) {
 
 Route::resource('/users', UsersController::class);
 Route::post('/users/login', [UsersController::class, 'login']);
-Route::post('/users/logout', [UsersController::class, 'logout']);
+Route::post('/users/logout', [UsersController::class, 'logout'])->middleware('auth:sanctum');
 Route::resource('/tasks', TaskController::class)->middleware('auth:sanctum');
 Route::resource('/tasks-shared', TaskSharesController::class)->middleware('auth:sanctum');
